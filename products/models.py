@@ -20,6 +20,20 @@ class Color(models.Model):
     def __str__(self):
         return self.name
 
+class Category(models.Model):
+    class Meta:
+        verbose_name_plural = "Categories"
+
+    name = models.CharField(
+        max_length=20
+    )
+
+    icon = models.CharField(
+        max_length=20
+    )
+
+    def __str__(self):
+        return self.name
 
 class Product(models.Model):
     name = models.CharField(
@@ -31,9 +45,7 @@ class Product(models.Model):
     picture = models.ImageField(
         upload_to="pictures/products", blank= True, null= True
     )
-    category = models.CharField(
-        max_length=50
-    )
+    category = models.OneToOneField( Category, on_delete=models.CASCADE)
 
     sizes = models.ManyToManyField(Size, blank =True)
     colors = models.ManyToManyField(Color, blank =True)
