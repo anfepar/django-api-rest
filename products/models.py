@@ -45,7 +45,7 @@ class Product(models.Model):
     picture = models.ImageField(
         upload_to="pictures/products", blank= True, null= True
     )
-    category = models.OneToOneField( Category, on_delete=models.CASCADE)
+    category = models.ForeignKey( Category, on_delete=models.CASCADE)
 
     sizes = models.ManyToManyField(Size, blank =True)
     colors = models.ManyToManyField(Color, blank =True)
