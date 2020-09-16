@@ -22,6 +22,7 @@ from products import views
 
 router = routers.DefaultRouter()
 router.register(r'products', views.ProductViewSet, basename="Product")
+router.register(r'categories', views.CatergoryViewSet, basename="Categories")
 
 urlpatterns = [
     path('', include(router.urls)),
